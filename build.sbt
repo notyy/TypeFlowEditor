@@ -8,7 +8,7 @@ import sbt._
 // set the name of the project
 
 
-name := "type-flow"
+name := "type-flow-editor"
 
 version := "0.0.1"
 
