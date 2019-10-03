@@ -6,7 +6,7 @@ import sbt._
 //
 //scroogeBuildOptions in Compile := Seq("--finagle", "--verbose")
 // set the name of the project
-
+enablePlugins(ScalaJSPlugin)
 
 name := "type-flow-editor"
 
@@ -17,7 +17,9 @@ isSnapshot := true
 organization := "com.github.notyy"
 
 // set the Scala version used for the project
-scalaVersion := "2.13.0"
+scalaVersion := "2.12.8"
+
+scalaJSUseMainModuleInitializer := true
 
 resolvers ++= Seq(
   "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases",
@@ -26,17 +28,17 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   // "org.scalacheck" %% "scalacheck" % "1.13.4" % "test",
-  "org.pegdown" % "pegdown" % "1.6.0" % "test", //used in html report
-  "org.scalactic" %% "scalactic" % "3.0.8",
-  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
-  "org.slf4j" % "slf4j-api" % "1.7.7",
-  // "com.storm-enroute" %% "scalameter" % "0.8.2" % "test",
-  "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
-  "junit" % "junit" % "4.11" % "test",
-  "com.novocode" % "junit-interface" % "0.11" % "test",
-  "com.h2database" % "h2" % "1.3.176",
-  "org.mockito" % "mockito-all" % "1.9.5" % "test,provided",
+//  "org.pegdown" % "pegdown" % "1.6.0" % "test", //used in html report
+//  "org.scalactic" %% "scalactic" % "3.0.8",
+//  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+//  "org.slf4j" % "slf4j-api" % "1.7.7",
+//  // "com.storm-enroute" %% "scalameter" % "0.8.2" % "test",
+//  "ch.qos.logback" % "logback-classic" % "1.2.3",
+//  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
+//  "junit" % "junit" % "4.11" % "test",
+//  "com.novocode" % "junit-interface" % "0.11" % "test",
+//  "com.h2database" % "h2" % "1.3.176",
+//  "org.mockito" % "mockito-all" % "1.9.5" % "test,provided",
   // "com.typesafe.akka" %% "akka-actor" % "2.5.3",
   // "com.typesafe.akka" %% "akka-agent" % "2.5.3",
   // "com.typesafe.akka" %% "akka-camel" % "2.5.3",
@@ -59,8 +61,8 @@ libraryDependencies ++= Seq(
   // "com.typesafe.akka" %% "akka-contrib" % "2.5.3",
   // "com.googlecode.scalascriptengine" %% "scalascriptengine" % "1.3.11",
   // "org.scala-lang" % "scala-compiler" % "2.12.3",
-  "org.seleniumhq.selenium" % "selenium-java" % "2.35.0" % "test",
-  "org.json4s" %% "json4s-native" % "3.6.7",
+//  "org.seleniumhq.selenium" % "selenium-java" % "2.35.0" % "test",
+//  "org.json4s" %% "json4s-native" % "3.6.7",
 //  "org.hamcrest" % "hamcrest-junit" %"2.0.0.0",
 //  "org.mockito" % "mockito-core" % "2.7.22",
   // "org.quartz-scheduler" % "quartz" % "2.2.3",
@@ -68,12 +70,16 @@ libraryDependencies ++= Seq(
 //  "com.typesafe.slick" %% "slick" % "3.3.2",
 //  "com.typesafe.slick" %% "slick-hikaricp" % "3.3.2",
 //  "com.github.dreamhead" % "moco-core" % "0.11.1" exclude("org.apache.httpcomponents", "httpclient"),
-  "org.typelevel" %% "cats-core" % "2.0.0",
-  "com.aliyun" % "aliyun-java-sdk-fc" % "1.4.0",
-  "com.aliyun.fc.runtime" % "fc-java-core" % "1.3.0",
-  "com.aliyun.oss" % "aliyun-sdk-oss" % "3.6.0",
-  "org.json4s" %% "json4s-native" % "3.6.7"
+//  "org.typelevel" %% "cats-core" % "2.0.0",
+//  "com.aliyun" % "aliyun-java-sdk-fc" % "1.4.0",
+//  "com.aliyun.fc.runtime" % "fc-java-core" % "1.3.0",
+//  "com.aliyun.oss" % "aliyun-sdk-oss" % "3.6.0",
+//  "org.json4s" %% "json4s-native" % "3.6.7",
+//  "org.scala-js" %% "scalajs-library" % "0.6.29",
+  "com.thoughtworks.binding" %%% "dom" % "11.8.1"
 )
+
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 
 //   TODO reopen it later
 //testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework")
@@ -194,7 +200,7 @@ testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature","-language:higherKinds","-language:implicitConversions")
 
-assemblyMergeStrategy in assembly := {
-  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
-  case x => MergeStrategy.first
-}
+//assemblyMergeStrategy in assembly := {
+//  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+//  case x => MergeStrategy.first
+//}
