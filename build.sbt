@@ -76,7 +76,8 @@ libraryDependencies ++= Seq(
 //  "com.aliyun.oss" % "aliyun-sdk-oss" % "3.6.0",
 //  "org.json4s" %% "json4s-native" % "3.6.7",
 //  "org.scala-js" %% "scalajs-library" % "0.6.29",
-  "com.thoughtworks.binding" %%% "dom" % "11.8.1"
+  "com.thoughtworks.binding" %%% "dom" % "11.8.1",
+  "com.thoughtworks.binding" %%% "futurebinding" % "11.8.1"
 )
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
