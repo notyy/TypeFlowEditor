@@ -22,7 +22,7 @@ scalaVersion := "2.12.8"
 scalaJSUseMainModuleInitializer := true
 
 resolvers ++= Seq(
-  "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases",
+  "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases",
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 )
 
