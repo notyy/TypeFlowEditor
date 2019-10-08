@@ -3,7 +3,7 @@ package com.notyy.typeflow.editor
 import com.thoughtworks.binding.Binding.Var
 import com.thoughtworks.binding.{Binding, FutureBinding, dom}
 import org.scalajs.dom.ext.Ajax
-import org.scalajs.dom.raw.Event
+import org.scalajs.dom.raw.{Event, KeyboardEvent}
 import org.scalajs.dom.{Node, document}
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -21,11 +21,19 @@ object TypeFlowEditor {
         <div class="col-4" id="editor-area">
           <div class="row" id="command-input-area">
             <label for="commandInput">请输入模型操作命令</label>
-            <input type="text" class="form-control" id="commandInput" placeholder="输入命令"></input>
+            <input id="commandInput"
+               onkeypress={
+                  event: KeyboardEvent =>
+                    val code = event.charCode
+                    if(code == 13) {
+                      githubUser := (commandInput.value)
+                    } else {
+                    }
+               }
+                   type="text" class="form-control" placeholder="输入命令"></input>
             <button id="commandSubmitButton"
                onclick={
-               event: Event => githubUser :=(commandInput.value)
-               }
+                  event: Event => githubUser := (commandInput.value)}
             type="submit" class="btn btn-primary">提交</button>
           </div>
           <hr/>
@@ -55,7 +63,7 @@ object TypeFlowEditor {
         </div>
       </div>
     </div>
-  }
+    }
 
   @JSExportTopLevel("bindingRender")
   def bindingRender(): Unit = {
