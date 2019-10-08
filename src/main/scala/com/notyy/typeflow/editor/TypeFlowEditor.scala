@@ -1,15 +1,13 @@
 package com.notyy.typeflow.editor
 
-import com.notyy.typeflow.editor.SampleMain.table
+import com.thoughtworks.binding.Binding.Var
 import com.thoughtworks.binding.{Binding, FutureBinding, dom}
-import com.thoughtworks.binding.Binding.{BindingSeq, Var}
-import org.scalajs.dom.{Event, Node, document}
-import org.scalajs.dom.raw.Event
-import org.scalajs.dom.html.Input
 import org.scalajs.dom.ext.Ajax
+import org.scalajs.dom.raw.Event
+import org.scalajs.dom.{Node, document}
 
-import scala.scalajs.js.JSON
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
+import scala.scalajs.js.JSON
 import scala.scalajs.js.annotation.JSExportTopLevel
 import scala.util.{Failure, Success}
 
